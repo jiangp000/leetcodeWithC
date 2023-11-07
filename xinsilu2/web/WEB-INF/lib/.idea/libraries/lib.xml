@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bcprov-jdk15on-1.47.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-fileupload.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-lang3-3.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ognl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-connector-java-5.1.45-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/struts2-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-io.jar!/" />
+      <root url="jar://$PROJECT_DIR$/javassist-3.11.0.GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/log4j-api-2.13.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/freemarker.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-codec-1.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/standard.jar!/" />
+      <root url="jar://$PROJECT_DIR$/json-lib-2.3-jdk15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

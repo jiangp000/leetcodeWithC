@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.ui.theme" value="simple"/>
+
+    <package name="admin" namespace="/admin" extends="xinsilu">
+        <!--设置拦截器-->
+        <interceptors>
+            <interceptor name="AdminInterceptor" class="action.interceptors.AdminInterceptor"></interceptor>
+
+            <interceptor-stack name="adminStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="AdminInterceptor"></interceptor-ref>
+            </interceptor-stack>
+
+        </interceptors>
+
+        <default-interceptor-ref name="adminStack"/>
+
+        <!--设置默认首页-->
+        <default-action-ref name="loginJSP"/>
+
+        <global-results>
+            <result name="login">/WEB-INF/jsp/admin/login.jsp</result>
+            <result name="error">/WEB-INF/jsp/admin/common/error.jsp</result>
+            <result name="input">/WEB-INF/jsp/admin/common/input.jsp</result>
+            <result name="success">/WEB-INF/jsp/admin/common/success.jsp</result>
+        </global-results>
+
+        <!--首页-->
+
+        <action name="loginJSP" class="action.admin.AdminAction">
+            <result name="success">/WEB-INF/jsp/admin/login.jsp</result>
+        </action>
+
+        <action name="login" class="action.admin.AdminAction" method="login">
+            <result name="success">/WEB-INF/jsp/admin/index.jsp</result>
+        </action>
+
+        <action name="logout" class="action.admin.AdminAction" method="logout">
+            <result name="success">/WEB-INF/jsp/admin/login.jsp</result>
+        </action>
+
+        <action name="index">
+            <result name="success">/WEB-INF/jsp/admin/index.jsp</result>
+        </action>
+
+
+        <!--新闻管理-->
+        <action name="news" class="action.admin.NewsAction" method="news">
+            <result name="success">/WEB-INF/jsp/admin/news/news.jsp</result>
+        </action>
+        <action name="addNewsJSP" class="action.admin.NewsAction">
+            <result name="success">/WEB-INF/jsp/admin/news/addNews.jsp</result>
+        </action>
+        <action name="addNews" class="action.admin.NewsAction" method="addNews">
+            <result name="input">/WEB-INF/jsp/admin/news/addNews.jsp</result>
+        </action>
+        <action name="editNewsJSP" class="action.admin.NewsAction" method="editNewsJSP">
+            <result name="success">/WEB-INF/jsp/admin/news/editNews.jsp</result>
+        </action>
+        <action name="editNews" class="action.admin.NewsAction" method="editNews">
+        </action>
+        <action name="deleteNews" class="action.admin.NewsAction" method="deleteNews">
+        </action>
+
+        <!--附件管理-->
+        <action name="files" class="action.admin.FilesAction" method="files">
+            <result name="success">/WEB-INF/jsp/admin/files/files.jsp</result>
+        </action>
+        <action name="addFileJSP" class="action.admin.FilesAction">
+            <result name="success">/WEB-INF/jsp/admin/files/addFile.jsp</result>
+        </action>
+        <action name="addFile" class="action.admin.FilesAction" method="addFile">
+            <!--<result name="input" type="redirectAction">　　　　-->
+            <!--<param name="actionName">addFileJSP</param>-->
+            <!--</result>-->
+        </action>
+        <action name="deleteFile" class="action.admin.FilesAction" method="deleteFile">
+            <result name="input" type="redirectAction">　　　　
+                <param name="actionName">files</param>
+            </result>
+        </action>
+
+        <!--培训管理-->
+
+        <action name="train" class="action.admin.TrainAction" method="train">
+            <result name="success">/WEB-INF/jsp/admin/train/train.jsp</result>
+        </action>
+        <action name="addTrainJSP" class="action.admin.TrainAction">
+            <result name="success">/WEB-INF/jsp/admin/train/addTrain.jsp</result>
+        </action>
+        <action name="addTrain" class="action.admin.TrainAction" method="addTrain">
+        </action>
+        <action name="editTrainJSP" class="action.admin.TrainAction" method="editTrainJSP">
+            <result name="success">/WEB-INF/jsp/admin/train/editTrain.jsp</result>
+        </action>
+        <action name="editTrain" class="action.admin.TrainAction" method="editTrain">
+        </action>
+        <action name="deleteTrain" class="action.admin.TrainAction" method="deleteTrain">
+        </action>
+        <action name="outputTrainJSP" class="action.admin.TrainEnrollAction" method="outputTrainJSP">
+            <result name="success">/WEB-INF/jsp/admin/train/outputTrain.jsp</result>
+        </action>
+        <action name="outputTrain" class="action.admin.TrainEnrollAction" method="outputTrain">
+            <result name="success">/WEB-INF/jsp/admin/enrollCSV.jsp</result>
+        </action>
+
+
+        <!--项目管理-->
+
+        <action name="outputProjectJSP" class="action.admin.ProjectEnrollAction" method="outputProjectJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputProject.jsp</result>
+        </action>
+        <action name="outputProject" class="action.admin.ProjectEnrollAction" method="outputProject">
+            <result name="success">/WEB-INF/jsp/admin/enrollCSV.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputProjectJSP</param>
+            </result>
+        </action>
+
+
+        <!--课题研究-->
+
+        <action name="outputResearchJSP" class="action.admin.ResearchEnrollAction" method="outputResearchJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputResearch.jsp</result>
+        </action>
+        <action name="outputResearch" class="action.admin.ResearchEnrollAction" method="outputResearch">
+            <result name="success">/WEB-INF/jsp/admin/enrollCSV.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputResearchJSP</param>
+            </result>
+        </action>
+
+        <!--大赛管理-->
+
+        <!--导出申报表-->
+        <action name="outputResearchApplyJSP" class="action.admin.ResearchEnrollAction" method="outputResearchJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputResearchApply.jsp</result>
+        </action>
+        <action name="outputResearchApply" class="action.admin.ResearchEnrollAction" method="outputResearchApply">
+            <!--<result name="success">/WEB-INF/jsp/admin/enrollCSV.jsp</result>-->
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputResearchApplyJSP</param>
+            </result>
+        </action>
+
+        <!--管理员 下载 分数表-->
+        <action name="outputResultScoreJSP" class="action.admin.DownloadAllScoreAction" method="downloadAllScoreJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputResultScore.jsp</result>
+        </action>
+        <action name="outputResultScore" class="action.admin.DownloadAllScoreAction" method="downloadScore">
+            <!--<result name="success">/WEB-INF/jsp/admin/outputResultScore.jsp</result>-->
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputResultScoreJSP</param>
+            </result>
+        </action>
+
+        <action name="outputPaperScoreJSP" class="action.admin.DownloadAllScoreAction" method="downloadAllScoreJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputPaperScore.jsp</result>
+        </action>
+        <action name="outputPaperScore" class="action.admin.DownloadAllScoreAction" method="downloadPaperScore">
+            <result name="success">/WEB-INF/jsp/admin/outputPaperScore.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputPaperScoreJSP</param>
+            </result>
+        </action>
+
+        <action name="outputFinalScoreJSP" class="action.admin.DownloadAllScoreAction" method="downloadAllScoreJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputFinalScore.jsp</result>
+        </action>
+        <action name="outputFinalScore" class="action.admin.DownloadAllScoreAction" method="downloadFinalScore">
+            <result name="success">/WEB-INF/jsp/admin/outputFinalScore.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputFinalScoreJSP</param>
+            </result>
+        </action>
+
+        <action name="outputFinalPreScoreJSP" class="action.admin.DownloadAllScoreAction" method="downloadAllScoreJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputFinalPreScore.jsp</result>
+        </action>
+        <action name="outputFinalPreScore" class="action.admin.DownloadAllScoreAction" method="downloadFinalPreScore">
+            <result name="success">/WEB-INF/jsp/admin/outputFinalPreScore.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputFinalPreScoreJSP</param>
+            </result>
+        </action>
+        <!--控制教师提交页面 资料提交、现场汇报提交阶段-->
+        <action name="submitStageControlJSP" class="action.admin.StageControlAction" method="downloadAllScoreJSP">
+            <result name="success">/WEB-INF/jsp/admin/submitStageControl.jsp</result>
+        </action>
+        <action name="submitStageControl" class="action.admin.StageControlAction" method="updateSubmitStage">
+            <!--<result name="success">/WEB-INF/jsp/admin/outputResultScore.jsp</result>-->
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">submitStageControlJSP</param>
+            </result>
+        </action>
+        <!--控制评委界面 初审、网评、现评阶段-->
+        <action name="scoreStageControlJSP" class="action.admin.StageControlAction" method="downloadAllScoreJSP">
+            <result name="success">/WEB-INF/jsp/admin/scoreStageControl.jsp</result>
+        </action>
+        <action name="scoreStageControl" class="action.admin.StageControlAction" method="updateScoreStage">
+            <!--<result name="success">/WEB-INF/jsp/admin/outputResultScore.jsp</result>-->
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">scoreStageControlJSP</param>
+            </result>
+        </action>
+
+        <!--撤回评委提交和教师提交-->
+        <action name="revokeJudgeSubmitJSP" class="action.admin.StageControlAction" method="revokeJudgeSubmitJSP">
+            <result name="success">/WEB-INF/jsp/admin/revokeJudgeSubmitJSP.jsp</result>
+        </action>
+        <action name="revokeJudgeSubmit" class="action.admin.StageControlAction" method="revokeJudgeSubmit">
+            <result name="noyear" type="redirectAction">
+                <param name="actionName">revokeJudgeSubmitJSP</param>
+            </result>
+        </action>
+        <action name="revokeTeacherSubmitJSP" class="action.admin.StageControlAction" method="revokeTeacherSubmitJSP">
+            <result name="success">/WEB-INF/jsp/admin/revokeTeacherSubmitJSP.jsp</result>
+        </action>
+        <action name="revokeTeacherSubmit" class="action.admin.StageControlAction" method="revokeTeacherSubmit">
+            <result name="noyear" type="redirectAction">
+                <param name="actionName">revokeTeacherSubmitJSP</param>
+            </result>
+        </action>
+
+
+
+        <!--分数资料下载-->
+        <action name="outputDataScoreJSP" class="action.admin.DownloadAllScoreAction" method="downloadAllScoreJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputDataScore.jsp</result>
+        </action>
+        <action name="dataDownloadScore" class="action.admin.DownloadAllScoreAction" method="getDataScoreFile">
+            <result name="success">/WEB-INF/jsp/admin/outputDataScoreList.jsp</result>
+        </action>
+
+        <action name="outputResultJSP" class="action.admin.ResultGetAction" method="outputResultJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputResult.jsp</result>
+        </action>
+        <action name="outputResult" class="action.admin.ResultGetAction" method="outputPaperResult">
+            <result name="success">/WEB-INF/jsp/admin/outputResult.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputResultJSP</param>
+            </result>
+        </action>
+
+        <action name="outputScoreJSP" class="action.admin.DownloadAllScoreAction" method="downloadAllScoreJSP">
+            <result name="success">/WEB-INF/jsp/admin/outputScore.jsp</result>
+        </action>
+        <action name="outputScore" class="action.admin.DownloadAllScoreAction" method="downloadFinPreScore">
+            <result name="success">/WEB-INF/jsp/admin/outputScore.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">outputScoreJSP</param>
+            </result>
+        </action>
+
+        <!--评委管理-->
+        <action name="addJudgerJSP" class="action.admin.JudgerAction" method="addJudgerJSP">
+            <result name="success">/WEB-INF/jsp/admin/addJudger.jsp</result>
+        </action>
+        <action name="addJudge" class="action.admin.JudgerAction" method="addJudge">
+            <result name="success">/WEB-INF/jsp/admin/common/success.jsp</result>
+        </action>
+
+        <action name="addExternalJudgerJSP" class="action.admin.JudgerAction" method="addExternelJudgeJSP">
+            <result name="success">/WEB-INF/jsp/admin/addExternalJudger.jsp</result>
+        </action>
+
+        <action name="addExternelJudge" class="action.admin.JudgerAction" method="addExternelJudge">
+            <result name="success">/WEB-INF/jsp/admin/common/success.jsp</result>
+        </action>
+
+        <action name="judgeManagerJSP" class="action.admin.JudgerAction" method = "ManageJudgeJSP">
+            <result name="success">/WEB-INF/jsp/admin/judgeManager.jsp</result>
+        </action>
+        <action name="ManageJudge" class="action.admin.JudgerAction" method="ManageJudge">
+            <result name="success">/WEB-INF/jsp/admin/common/success.jsp</result>
+        </action>
+        <action name="removeJudgerJSP" class="action.admin.JudgerAction" method="removeJudgerJSP">
+            <result name="success">/WEB-INF/jsp/admin/removeJudger.jsp</result>
+        </action>
+        <action name="removeJudge" class="action.admin.JudgerAction" method="removeJudge">
+            <result name="success">/WEB-INF/jsp/admin/common/success.jsp</result>
+        </action>
+
+
+    </package>
+
+
+</struts>

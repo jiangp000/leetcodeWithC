@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.multipart.maxSize" value="2147483648"/>
+    <constant name="struts.multipart.parser" value="MyJakartaMultiPartRequestRef" />
+    <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
+          name="MyJakartaMultiPartRequestRef"
+          class="domain.JakartaMultiPartRequest" scope="prototype" optional="true"/>
+    <package name="xinsilu" namespace="/" extends="struts-default,json-default">
+        <!--设置默认首页-->
+        <default-action-ref name="index"/>
+
+
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+            <result name="input">/WEB-INF/jsp/common/input.jsp</result>
+        </global-results>
+
+
+        <!--首页-->
+
+        <action name="index" class="action.common.CommonAction">
+            <result name="success">home.jsp</result>
+        </action>
+
+        <action name="newsInfo" class="action.common.CommonAction" method="newsInfo">
+            <result name="success">/WEB-INF/jsp/common/newsInfo.jsp</result>
+        </action>
+
+        <action name="moreNews" class="action.common.CommonAction" method="getAllNews">
+            <result name="success">/WEB-INF/jsp/common/allNews.jsp</result>
+        </action>
+
+        <action name="projectIntro">
+            <result name="success">/WEB-INF/jsp/project/projectIntro.jsp</result>
+        </action>
+
+        <action name="externelJudge">
+            <result name="success">/WEB-INF/jsp/admin/login.jsp</result>
+        </action>
+
+        <!--<action name="projectRegistration">-->
+            <!--<result name="success">/WEB-INF/jsp/project/projectRegistration.jsp</result>-->
+        <!--</action>-->
+
+        <action name="projectEnroll" class="action.project.EnrollAction">
+            <!--活动开启-->
+            <result name="success">/WEB-INF/jsp/project/projectEnroll.jsp</result>
+            <!--活动暂未开启 -->
+            <!--<result name="success">/WEB-INF/jsp/common/notNow.jsp</result>-->
+        </action>
+
+        <action name="submitProjectEnroll" class="action.project.EnrollAction" method="submit">
+            <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+            <result name="input">/WEB-INF/jsp/common/input.jsp</result>
+        </action>
+
+        <action name="downloadFile" class="action.project.ProjectAction" method="file">
+            <result name="success">/WEB-INF/jsp/project/downloadFile.jsp</result>
+        </action>
+
+        <action name="downloadExe" class="action.project.ProjectAction" method="exe">
+            <result name="success">/WEB-INF/jsp/project/downloadExe.jsp</result>
+        </action>
+
+        <!--培训-->
+
+        <action name="schedule" class="action.train.TrainAction" method="schedule">
+            <result name="success">/WEB-INF/jsp/train/schedule.jsp</result>
+        </action>
+
+        <action name="oldTraining" class="action.train.TrainAction" method="getOldTraining">
+            <result name="success">/WEB-INF/jsp/train/oldTraining.jsp</result>
+        </action>
+
+        <action name="trainEnroll" class="action.train.EnrollAction">
+            <!--<result name="success">/WEB-INF/jsp/train/trainEnroll.jsp</result>-->
+            <result name="success">/WEB-INF/jsp/common/notNow.jsp</result>
+        </action>
+
+        <action name="submitTrainEnroll" class="action.train.EnrollAction" method="submit">
+            <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        </action>
+
+        <!--课题研究-->
+        <!--&lt;!&ndash;项目申报&ndash;&gt;
+        <action name="applyResearchEnroll" class="action.research.ResearchAction">
+            &lt;!&ndash;活动开启&ndash;&gt;
+            <result name="success">/WEB-INF/jsp/research/applyResearchEnroll.jsp</result>
+            &lt;!&ndash;活动暂未开启 &ndash;&gt;
+            &lt;!&ndash;<result name="success">/WEB-INF/jsp/common/notNow.jsp</result>&ndash;&gt;
+        </action>
+        <action name="submitApplyResearchEnroll" class="action.research.ResearchAction" method="submitApplyPre">
+            <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        </action>
+        &lt;!&ndash; 创新大赛提交&ndash;&gt;
+        <action name="InnovationEnroll" class="action.research.EnrollAction">
+            &lt;!&ndash;活动开启&ndash;&gt;
+            <result name="success">/WEB-INF/jsp/research/innovationResearchEnroll.jsp</result>
+            &lt;!&ndash;活动暂未开启 &ndash;&gt;
+        &lt;!&ndash; <result name="success">/WEB-INF/jsp/common/notNow.jsp</result>&ndash;&gt;
+    </action>
+    <action name="submitInnovationEnroll" class="action.research.InnovationAction" method="submitInnovation">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+    </action>
+    &lt;!&ndash;中期报告&ndash;&gt;
+        <action name="midResearchEnroll" class="action.research.EnrollAction">
+            &lt;!&ndash;活动开启&ndash;&gt;
+            <result name="success">/WEB-INF/jsp/research/midResearchEnroll.jsp</result>
+            &lt;!&ndash;活动暂未开启 &ndash;&gt;
+        &lt;!&ndash;<result name="success">/WEB-INF/jsp/common/notNow.jsp</result>&ndash;&gt;
+    </action>
+    <action name="submitMidResearchEnroll" class="action.research.EnrollAction" method="submitMid">
+          <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+    </action>
+&lt;!&ndash; 教研论文&ndash;&gt;
+        <action name="paperResearchEnroll" class="action.research.ResearchAction">
+            &lt;!&ndash;活动开启&ndash;&gt;
+              <result name="success">/WEB-INF/jsp/research/paperResearchEnroll.jsp</result>
+             &lt;!&ndash;活动暂未开启 &ndash;&gt;
+        &lt;!&ndash;<result name="success">/WEB-INF/jsp/common/notNow.jsp</result>&ndash;&gt;
+    </action>
+    <action name="submitPaperResearchEnroll" class="action.research.ResearchAction" method="submitPap">
+         <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+    </action>
+&lt;!&ndash; 结题报告&ndash;&gt;
+        <action name="finalResearchEnroll" class="action.research.ResearchAction">
+            &lt;!&ndash;活动开启&ndash;&gt;
+            <result name="success">/WEB-INF/jsp/research/finalResearchEnroll.jsp</result>
+            &lt;!&ndash;活动暂未开启 &ndash;&gt;
+        &lt;!&ndash;<result name="success">/WEB-INF/jsp/common/notNow.jsp</result>&ndash;&gt;
+   </action>
+   <action name="submitFinalResearchEnroll" class="action.research.ResearchAction" method="submitFin">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+   </action>
+
+   &lt;!&ndash; 分数查询  &ndash;&gt;
+        <action name="researchScoreSearch" class="action.research.GetSelfResearchScoreAction" method="getSelfScoreJSP">
+            <result name="success">/WEB-INF/jsp/research/researchScoreSearch.jsp</result>
+        </action>
+        <action name="researchApplyScoreJSP" class="action.research.GetSelfResearchScoreAction" method="getSelfScoreJSP">
+            <result name="success">/WEB-INF/jsp/research/researchApplyScore.jsp</result>
+        </action>
+        <action name="researchPaperScoreJSP" class="action.research.GetSelfResearchScoreAction" method="getSelfScoreJSP">
+            <result name="success">/WEB-INF/jsp/research/researchPaperScore.jsp</result>
+        </action>
+        <action name="researchFinalScoreJSP" class="action.research.GetSelfResearchScoreAction" method="getSelfScoreJSP">
+            <result name="success">/WEB-INF/jsp/research/researchFinalScore.jsp</result>
+        </action>
+        <action name="submitPaperScoreSearch" class="action.research.GetSelfResearchScoreAction" method="getSelfScore">
+            <result name="success">/WEB-INF/jsp/research/researchPaperScore.jsp</result>
+            &lt;!&ndash;<result name="success">/WEB-INF/jsp/research/researchScoreSearch.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">researchScoreSearch</param>
+            </result>&ndash;&gt;
+        </action>
+        <action name="submitFinalScoreSearch" class="action.research.GetSelfResearchScoreAction" method="getSelfScore">
+            <result name="success">/WEB-INF/jsp/research/researchFinalScore.jsp</result>
+            &lt;!&ndash;<result name="success">/WEB-INF/jsp/research/researchScoreSearch.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">researchScoreSearch</param>
+            </result>&ndash;&gt;
+        </action>
+        <action name="submitResearchScoreSearch" class="action.research.GetSelfResearchScoreAction" method="getSelfScore">
+            <result name="success">/WEB-INF/jsp/research/researchScoreSearch.jsp</result>
+            &lt;!&ndash;<result name="success">/WEB-INF/jsp/research/researchScoreSearch.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">researchScoreSearch</param>
+            </result>&ndash;&gt;
+        </action>
+        &lt;!&ndash; 文件下载  &ndash;&gt;
+        <action name="researchFileDownload" class="action.research.ResearchFileDownloadAction" method="getFileJSP">
+            <result name="success">/WEB-INF/jsp/research/researchFileDownload.jsp</result>
+        </action>
+
+        <action name="researchApplyFileJSP" class="action.research.ResearchFileDownloadAction" method="getFileJSP">
+            <result name="success">/WEB-INF/jsp/research/researchApplyFile.jsp</result>
+        </action>
+        <action name="researchPaperFileJSP" class="action.research.ResearchFileDownloadAction" method="getFileJSP">
+            <result name="success">/WEB-INF/jsp/research/researchPaperFile.jsp</result>
+        </action>
+        <action name="researchFinalFileJSP" class="action.research.ResearchFileDownloadAction" method="getFileJSP">
+            <result name="success">/WEB-INF/jsp/research/researchFinalFile.jsp</result>
+        </action>
+
+        <action name="submitPaperFileDownload" class="action.research.ResearchFileDownloadAction" method="getResearchFile">
+            <result name="success">/WEB-INF/jsp/research/researchPaperFileList.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">researchPaperFileJSP</param>
+            </result>
+        </action>
+        <action name="submitFinalFileDownload" class="action.research.ResearchFileDownloadAction" method="getResearchFile">
+            <result name="success">/WEB-INF/jsp/research/researchFinalFileList.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">researchFinalFileJSP</param>
+            </result>
+        </action>
+
+
+        <action name="submitResearchFileDownload" class="action.research.ResearchFileDownloadAction" method="getResearchFile">
+            <result name="success">/WEB-INF/jsp/research/researchFileList.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">researchFileDownload</param>
+            </result>
+        </action>-->
+
+
+<!--交流研讨-->
+
+        <action name="discussion" class="action.discussion.DiscussionAction">
+            <result name="success">/WEB-INF/jsp/discussion/discussion.jsp</result>
+        </action>
+
+        <!--项目展示-->
+        <action name="projectDisplay" class="action.display.DisplayAction">
+            <result name="success">/WEB-INF/jsp/display/projectDisplay.jsp</result>
+        </action>
+<!--        <action name="teacher" class="action.display.DisplayAction" method="teacher">-->
+<!--            <result name="success">/WEB-INF/jsp/display/teacher.jsp</result>-->
+<!--        </action>-->
+
+
+
+        <action name="admin">
+            <result name="success" type="redirectAction">　　　　
+                <param name="actionName">admin/index</param>
+            </result>
+        </action>
+
+        <action name="judge1">
+            <result name="success" type="redirectAction">　　　　
+                <param name="actionName">judge/loginJSP</param>
+            </result>
+        </action>
+
+        <action name="judge2">
+            <result name="success" type="redirectAction">　　　　
+                <param name="actionName">judge/externelLoginJSP</param>
+            </result>
+        </action>
+
+        <action name="teacher">
+            <result name="success" type="redirectAction">　　　　
+                <param name="actionName">teacher/loginJSP</param>
+            </result>
+        </action>
+
+    </package>
+
+    <include file="admin.xml"></include>
+    <include file="judge.xml"></include>
+    <include file="teacher.xml"></include>
+
+</struts>

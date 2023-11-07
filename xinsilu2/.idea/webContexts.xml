@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/web/WEB-INF/jsp/judge/judgeScore.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/jsp/judge" />
+        <entry key="file://$PROJECT_DIR$/web/WEB-INF/jsp/judge/researchInnoScore.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/jsp/judge" />
+        <entry key="file://$PROJECT_DIR$/web/WEB-INF/jsp/project/projectEnroll.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/jsp/project" />
+        <entry key="file://$PROJECT_DIR$/web/WEB-INF/jsp/research/applyResearchEnroll.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/jsp/research" />
+        <entry key="file://$PROJECT_DIR$/web/WEB-INF/jsp/research/innovationResearchEnroll.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/jsp/research" />
+      </map>
+    </option>
+  </component>
+</project>

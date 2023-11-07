@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xinsilu2">
+    <output-path>$PROJECT_DIR$/out/artifacts/xinsilu2</output-path>
+    <root id="archive" name="xinsilu2.war">
+      <element id="artifact" artifact-name="xinsilu:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="dir-copy" path="$PROJECT_DIR$/web" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/fastjson-1.2.79.jar" />
+        </element>
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/web" />
+    </root>
+  </artifact>
+</component>

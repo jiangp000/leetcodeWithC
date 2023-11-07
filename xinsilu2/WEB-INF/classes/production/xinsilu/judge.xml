@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.ui.theme" value="simple"/>
+
+    <package name="judge" namespace="/judge" extends="xinsilu">
+        <default-action-ref name="loginJSP"/>
+        <global-results>
+            <result name="login">/WEB-INF/jsp/judge/login.jsp</result>
+            <result name="error">/WEB-INF/jsp/judge/common/error.jsp</result>
+            <result name="input">/WEB-INF/jsp/judge/common/input.jsp</result>
+            <result name="success">/WEB-INF/jsp/judge/common/success.jsp</result>
+            <result name="externelLogin">/WEB-INF/jsp/judge/externelLogin.jsp</result>
+        </global-results>
+
+        <!--首页-->
+
+        <action name="loginJSP" class="action.judge.JudgeAction">
+             <result name="success">/WEB-INF/jsp/judge/login.jsp</result>
+        </action>
+
+        <action name="login" class="action.judge.JudgeAction" method="login">
+            <result name="success">/WEB-INF/jsp/judge/index.jsp</result>
+        </action>
+
+        <action name="logout" class="action.judge.JudgeAction" method="logout">
+            <result name="success" type="redirect">/</result>
+        </action>
+
+        <action name="index" class="action.judge.JudgeAction" method="login">
+            <result name="success">/WEB-INF/jsp/judge/index.jsp</result>
+        </action>
+
+        <action name="externelLoginJSP">
+            <result name="success">/WEB-INF/jsp/judge/externelLogin.jsp</result>
+        </action>
+
+        <action name="externelLogin" class="action.judge.JudgeAction" method="externellogin">
+            <result name="success">/WEB-INF/jsp/judge/index.jsp</result>
+        </action>
+
+        <!--项目申请-->
+        <action name="projectEnrollList" class="action.judge.JudgeProjectEnrollAction" method="projectEnrollList">
+                <result name="success">/WEB-INF/jsp/judge/projectEnrollList.jsp</result>
+        </action>
+
+        <action name="scoreProjectJSP" class="action.judge.JudgeProjectEnrollAction" method="scoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/projectScore.jsp</result>
+        </action>
+
+        <action name="submitProjectScore" class="action.judge.JudgeProjectEnrollAction" method="submitScore">
+            <result name="success" type="redirect">scoreProjectJSP?id=${id}</result>
+        </action>
+
+        <!--课题研究-->
+
+        <action name="researchEnrollList" class="action.judge.JudgeResearchEnrollAction" method="researchEnrollList">
+            <result name="success">/WEB-INF/jsp/judge/researchEnrollList.jsp</result>
+        </action>
+
+        <action name="scoreResearchJSP" class="action.judge.JudgeResearchEnrollAction" method="scoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/researchScore.jsp</result>
+            <result name="none">/WEB-INF/jsp/judge/common/none.jsp</result>
+        </action>
+
+        <action name="applyScoreJSP" class="action.judge.JudgeApplyScoreAction" method="applyJSP">
+            <result name="success">/WEB-INF/jsp/judge/researchApplyScore.jsp</result>
+            <result name="none">/WEB-INF/jsp/judge/common/none.jsp</result>
+        </action>
+
+        <action name="innoScoreJSP" class="action.judge.JudgeInnoScoreAction" method="innoJSP">
+            <result name="success">/WEB-INF/jsp/judge/researchInnoScore.jsp</result>
+            <result name="none">/WEB-INF/jsp/judge/common/none.jsp</result>
+        </action>
+
+        <action name="middleScoreJSP" class="action.judge.JudgeMiddleScoreAction" method="middleJSP">
+            <result name="success">/WEB-INF/jsp/judge/researchMiddleScore.jsp</result>
+            <result name="none">/WEB-INF/jsp/judge/common/none.jsp</result>
+        </action>
+
+        <action name="paperScoreJSP" class="action.judge.JudgePaperScoreAction" method="paperJSP">
+            <result name="success">/WEB-INF/jsp/judge/researchPaperScore.jsp</result>
+            <result name="none">/WEB-INF/jsp/judge/common/none.jsp</result>
+        </action>
+
+        <action name="finalScoreJSP" class="action.judge.JudgeFinalScoreAction" method="finalJSP">
+            <result name="success">/WEB-INF/jsp/judge/researchFinalScore.jsp</result>
+            <result name="none">/WEB-INF/jsp/judge/common/none.jsp</result>
+        </action>
+
+        <action name="submitResearchScore" class="action.judge.JudgeResearchEnrollAction" method="submitScore">
+            <result name="success" type="redirect">scoreResearchJSP?id=${id}</result>
+        </action>
+
+        <action name="submitApplyScore" class="action.judge.JudgeApplyScoreAction" method="submitAppScore">
+            <result name="success" type="redirect">applyScoreJSP?id=${id}</result>
+        </action>
+
+        <action name="submitInnovationScore" class="action.judge.JudgeInnoScoreAction" method="submitInnoScore">
+            <result name="success" type="redirect">innoScoreJSP?id=${id}</result>
+        </action>
+
+        <action name="submitMiddleScore" class="action.judge.JudgeMiddleScoreAction" method="submitMidScore">
+            <result name="success" type="redirect">middleScoreJSP?id=${id}</result>
+        </action>
+
+        <action name="submitPaperScore" class="action.judge.JudgePaperScoreAction" method="submitPapScore">
+            <result name="success" type="redirect">paperScoreJSP?id=${id}</result>
+        </action>
+
+        <action name="submitFinalScore" class="action.judge.JudgeFinalScoreAction" method="submitFinScore">
+            <result name="success" type="redirect">finalScoreJSP?id=${id}</result>
+        </action>
+
+        <action name="judgeDownloadFileJSP" class="action.judge.DownloadJudgeFileAction" method="getJudgeYear">
+            <result name="success">/WEB-INF/jsp/judge/judgeDownloadFile.jsp</result>
+        </action>
+        <action name="judgeDownloadFile" class="action.judge.DownloadJudgeFileAction" method="getJudgeFile">
+            <result name="success">/WEB-INF/jsp/judge/judgeFileList.jsp</result>
+        </action>
+
+        <!--评委下载资料-->
+        <action name="applyDownloadFileJSP" class="action.judge.DownloadJudgeFileAction" method="getJudgeYear">
+            <result name="success">/WEB-INF/jsp/judge/applyDownloadFile.jsp</result>
+        </action>
+        <action name="applyDownloadFile" class="action.judge.DownloadJudgeFileAction" method="getJudgeFile">
+            <result name="success">/WEB-INF/jsp/judge/applyFileList.jsp</result>
+        </action>
+
+        <action name="innoDownloadFileJSP" class="action.judge.DownloadJudgeFileAction" method="getJudgeYear">
+            <result name="success">/WEB-INF/jsp/judge/innoDownloadFile.jsp</result>
+        </action>
+        <action name="innoDownloadFile" class="action.judge.DownloadJudgeFileAction" method="getJudgeFile">
+            <result name="success">/WEB-INF/jsp/judge/innoFileList.jsp</result>
+        </action>
+
+        <action name="paperDownloadFileJSP" class="action.judge.DownloadJudgeFileAction" method="getJudgeYear">
+            <result name="success">/WEB-INF/jsp/judge/paperDownloadFile.jsp</result>
+        </action>
+        <action name="paperDownloadFile" class="action.judge.DownloadJudgeFileAction" method="getJudgeFile">
+            <result name="success">/WEB-INF/jsp/judge/paperFileList.jsp</result>
+        </action>
+
+        <action name="middleDownloadFileJSP" class="action.judge.DownloadJudgeFileAction" method="getJudgeYear">
+            <result name="success">/WEB-INF/jsp/judge/middleDownloadFile.jsp</result>
+        </action>
+        <action name="middleDownloadFile" class="action.judge.DownloadJudgeFileAction" method="getJudgeFile">
+            <result name="success">/WEB-INF/jsp/judge/middleFileList.jsp</result>
+        </action>
+
+        <action name="finalDownloadFileJSP" class="action.judge.DownloadJudgeFileAction" method="getJudgeYear">
+            <result name="success">/WEB-INF/jsp/judge/finalDownloadFile.jsp</result>
+        </action>
+        <action name="finalDownloadFile" class="action.judge.DownloadJudgeFileAction" method="getJudgeFile">
+            <result name="success">/WEB-INF/jsp/judge/finalFileList.jsp</result>
+        </action>
+
+
+        <!--评委打分-->
+        <action name="judgeScore" class="action.judge.JudgeScoreAction" method="scoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/judgeScore.jsp</result>
+        </action>
+
+        <action name="submitJudgeScore" class="action.judge.JudgeScoreAction" method="submitScore">
+            <result name="success">/WEB-INF/jsp/judge/common/success.jsp</result>
+        </action>
+
+        <!--评委下载自己的分数-->
+        <action name="judgeDownloadScoreJSP" class="action.judge.DownloadJudgeScoreAction" method="downloadScoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/judgeDownloadScore.jsp</result>
+        </action>
+        <action name="judgeDownloadScore" class="action.judge.DownloadJudgeScoreAction" method="downloadJudgeScore">
+            <!--<result name="success">/WEB-INF/jsp/judge/judgeScoreCSV.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">downloadResearchScoreJSP</param>
+            </result>-->
+        </action>
+        <action name="judgeDownloadPreScore" class="action.judge.DownloadJudgeScoreAction" method="downloadJudgeScore">
+            <!--<result name="success">/WEB-INF/jsp/judge/judgeScoreCSV.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">downloadResearchScoreJSP</param>
+            </result>-->
+        </action>
+        <action name="judgeDownloadPPTScore" class="action.judge.DownloadJudgeScoreAction" method="downloadJudgeScore">
+            <!--<result name="success">/WEB-INF/jsp/judge/judgeScoreCSV.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">downloadResearchScoreJSP</param>
+            </result>-->
+        </action>
+        <action name="innoDownloadResScore" class="action.judge.DownloadJudgeScoreAction" method="downloadInnoResScore">
+            <!--<result name="success">/WEB-INF/jsp/judge/judgeScoreCSV.jsp</result>
+            <result name="noyear" type="redirectAction">　　　　
+                <param name="actionName">downloadResearchScoreJSP</param>
+            </result>-->
+        </action>
+        <action name="applyDownloadScoreJSP" class="action.judge.DownloadJudgeScoreAction" method="downloadScoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/applyDownloadScore.jsp</result>
+        </action>
+        <action name="innoDownloadPreScoreJSP" class="action.judge.DownloadJudgeScoreAction" method="downloadScoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/innoDownloadPreScore.jsp</result>
+        </action>
+        <action name="innoDownloadPptScoreJSP" class="action.judge.DownloadJudgeScoreAction" method="downloadScoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/innoDownloadPptScore.jsp</result>
+        </action>
+        <action name="innoDownloadResultScoreJSP" class="action.judge.DownloadJudgeScoreAction" method="downloadScoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/innoDownloadResultScore.jsp</result>
+        </action>
+        <action name="middleDownloadScoreJSP" class="action.judge.DownloadJudgeScoreAction" method="downloadScoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/middleDownloadScore.jsp</result>
+        </action>
+        <action name="paperDownloadScoreJSP" class="action.judge.DownloadJudgeScoreAction" method="downloadScoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/paperDownloadScore.jsp</result>
+        </action>
+        <action name="finalDownloadScoreJSP" class="action.judge.DownloadJudgeScoreAction" method="downloadScoreJSP">
+            <result name="success">/WEB-INF/jsp/judge/finalDownloadScore.jsp</result>
+        </action>
+
+        <action name="uploadApplyScoreTableJSP" class="action.judge.JudgeApplyScoreAction" method="getUploadScores">
+            <result name="success">/WEB-INF/jsp/judge/uploadApplyScores.jsp</result>
+        </action>
+        <action name="uploadApplyScoreTable" class="action.judge.JudgeApplyScoreAction" method="submitAllScores">
+            <result name="success">/WEB-INF/jsp/judge/uploadApplyScores.jsp</result>
+        </action>
+
+        <action name="uploadInnoScoreTableJSP" class="action.judge.JudgeInnoScoreAction" method="getUploadScores">
+            <result name="success">/WEB-INF/jsp/judge/uploadInnoScores.jsp</result>
+        </action>
+        <action name="uploadInnoScoreTable" class="action.judge.JudgeInnoScoreAction" method="submitAllScores">
+            <result name="success">/WEB-INF/jsp/judge/uploadInnoScores.jsp</result>
+        </action>
+        <action name="uploadFinalScoreTableJSP" class="action.judge.JudgeFinalScoreAction" method="getUploadScores">
+            <result name="success">/WEB-INF/jsp/judge/uploadFinalScores.jsp</result>
+        </action>
+        <action name="uploadFinalScoreTable" class="action.judge.JudgeFinalScoreAction" method="submitAllScores">
+            <result name="success">/WEB-INF/jsp/judge/uploadFinalScores.jsp</result>
+        </action>
+
+        
+    </package>
+
+
+</struts>

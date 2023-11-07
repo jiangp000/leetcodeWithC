@@ -1,0 +1,99 @@
+.pager-list {
+    text-align: center;
+    padding: 20px;
+}
+
+a.current {
+    background-color: rgba(155, 43, 28, 1);
+    color: white;
+}
+
+.page-item {
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    min-width: 33px;
+    height: 35px;
+    margin: 5px;
+    padding: 0 5px;
+    line-height: 35px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    float: left;
+    margin-left: 20px;
+}
+
+.checkboxLabel {
+    float: left;
+    width: 90%;
+    overflow: hidden;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.input-group .form-control {
+    width: 90%;
+}
+
+#funding {
+    width: 20%;
+}
+
+.btn, a.btn {
+    background-color: #8c0000;
+    color: white;
+    margin-right: 10%;
+}
+
+.dd_img {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: #730011;
+}
+
+table.table td {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.form-control {
+    width: auto;
+}
+
+.form-group label {
+    font-size: 16px;
+}
+
+/*表单必填字段标红*/
+.sign_must{
+    color: #F00;
+    font-family: "SimSun";
+    padding-right: 4px;
+}
+
+/*teamMember表单同行*/
+.input-group .u_id{
+    display: inline;
+    float: left;
+    width: 20%;
+}
+.input-group .u_name{
+    float: left;
+    display: inline;
+    width: 20%;
+}
+.input-group .u_dept{
+    float: left;
+    display: inline;
+    width: 30%;
+}
+.input-group .u_author{
+    float: left;
+    display: inline;
+    width: 20%;
+}
